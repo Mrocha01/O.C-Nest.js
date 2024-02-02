@@ -20,17 +20,17 @@ export class ProductsService {
     return this.productRepo.find();
   }
 
-  findOne(id: number) {
+  findOne(id: string) {
     return this.productRepo.findOne({
       where: { id },
     });
   }
 
-  update(id: number, updateProductDto: UpdateProductDto) {
+  update(id: string, updateProductDto: UpdateProductDto) {
     return this.productRepo.update({ id }, updateProductDto);
   }
 
-  remove(id: number) {
+  remove(id: string) {
     return this.productRepo.delete({ id });
   }
 }
