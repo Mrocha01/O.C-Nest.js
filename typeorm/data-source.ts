@@ -1,6 +1,8 @@
 import { DataSourceOptions } from 'typeorm';
 import { config } from 'dotenv';
 import { Product } from '../src/products/entities/product.entity';
+import { Order } from '../src/orders/entities/order.entity';
+import { OrderItem } from '../src/orders/entities/order-item.entity';
 
 config();
 
@@ -11,7 +13,7 @@ export const dataSourceOptions: DataSourceOptions = {
   username: process.env.DB_USERNAME,
   password: process.env.DB_PASSWORD,
   database: process.env.DB_DATABASE,
-  entities: [Product],
+  entities: [Product, Order, OrderItem],
   synchronize: true,
   logging: true,
 };

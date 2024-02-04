@@ -1,11 +1,9 @@
 import {
   Column,
   CreateDateColumn,
-  JoinColumn,
-  ManyToOne,
+  Entity,
   PrimaryGeneratedColumn,
 } from 'typeorm';
-import { Product } from '../../products/entities/product.entity';
 
 export enum OrderStatus {
   PENDING = 'pending',
@@ -13,6 +11,7 @@ export enum OrderStatus {
   FAILED = 'failed',
 }
 
+@Entity()
 export class Order {
   @PrimaryGeneratedColumn('uuid')
   id: string;
@@ -28,25 +27,4 @@ export class Order {
 
   @CreateDateColumn()
   creted_at: Date;
-}
-
-export class OrderItem {
-  @PrimaryGeneratedColumn()
-  id: number;
-
-  @Column({ type: 'integer' })
-  quantity: number;
-
-  @Column()
-  price: number;
-
-  @ManyToOne(() => Product)
-  @JoinColumn({ name: 'product_id' })
-  product: Product;
-
-  @Column()
-  product_id: string;
-
-  @ManyToOne(() => Order)
-  order: Order;
 }
