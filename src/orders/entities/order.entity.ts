@@ -16,7 +16,7 @@ export class Order {
   @PrimaryGeneratedColumn('uuid')
   id: string;
 
-  @Column()
+  @Column({ type: 'decimal', precision: 10, scale: 2 })
   total: number;
 
   @Column()
